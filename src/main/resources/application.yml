@@ -1,0 +1,41 @@
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:com/springday2/demo/dao/AccountDao.xml
+  configuration:
+    map-underscore-to-camel-case: true
+#spring-jdbc配置
+Spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///testsql?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 7901
+    type: com.alibaba.druid.pool.DruidDataSource
+  # 配置视图解析器的前缀和后缀
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/
+#      suffix: .jsp
+#    hiddenmethod:
+#      filter:
+#        enabled: true
+  #thymeleaf配置
+  thymeleaf:
+    #在开发阶段，建议关闭thymeleaf的缓存
+    cache: false
+    mode: HTML
+  #SpringBoot需要通过控制器跳转才能访问到templates下的html文件
+  #因为springboot默认访问static,resources,public这些文件夹下的文件，而没有默认访问templates下的
+  #我们需要在配置加上:
+  web:
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/
+
+
+# 日志配置:
+logging:
+  level:
+    com.springday2: debug
+
+
+
